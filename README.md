@@ -110,6 +110,19 @@ The platform tracks:
 
 ---
 
+## 🎬 Video Demo
+
+**Watch the 3-minute demo:** [https://www.youtube.com/watch?v=kBLAqpSgyXw](https://www.youtube.com/watch?v=kBLAqpSgyXw)
+
+*Walkthrough showing:*
+- Problem overview & solution
+- Student and volunteer workflows
+- AI-powered matching in action
+- Community impact visualization
+- Future vision & roadmap
+
+---
+
 ## 🌐 Live Demo
 
 **Visit the live platform:** [https://cikgu-connect.vercel.app](https://cikgu-connect.vercel.app)
