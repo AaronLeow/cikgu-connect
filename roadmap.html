@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision & Roadmap - Cikgu Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #f97316, #22c55e, #3b82f6);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition cursor-pointer">
+                <span class="text-3xl">👨‍🏫</span>
+                <h1 class="text-2xl font-bold text-blue-600">Cikgu Connect</h1>
+            </a>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-4 py-12">
+        
+        <!-- Page Title -->
+        <div class="text-center mb-16 fade-in">
+            <h2 class="text-5xl font-bold text-gray-800 mb-4">🚀 Vision & Roadmap</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Our journey to make quality education accessible to every Malaysian student
+            </p>
+        </div>
+
+        <!-- Mission Statement -->
+        <div class="bg-gradient-to-r from-orange-500 to-purple-600 rounded-2xl p-10 text-white text-center mb-16 fade-in">
+            <h3 class="text-3xl font-bold mb-4">Our Mission</h3>
+            <p class="text-xl text-orange-100 max-w-3xl mx-auto">
+                "To eliminate financial barriers in education by connecting every Malaysian student 
+                who needs help with passionate volunteers willing to share their knowledge — completely free."
+            </p>
+        </div>
+
+        <!-- The Problem -->
+        <div class="bg-white rounded-2xl p-8 shadow-lg mb-16 fade-in">
+            <h3 class="text-3xl font-bold text-gray-800 mb-6 text-center">📊 The Problem We're Solving</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-red-600 mb-2">40%</div>
+                    <p class="text-gray-700">of Malaysian families struggle to afford tuition fees</p>
+                    <p class="text-sm text-gray-500 mt-2">B40 households spend RM200-500/month on tuition</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-orange-600 mb-2">73%</div>
+                    <p class="text-gray-700">of students rely on private tuition for exams</p>
+                    <p class="text-sm text-gray-500 mt-2">Tuition has become a necessity, not a choice</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl font-bold text-green-600 mb-2">1000s</div>
+                    <p class="text-gray-700">of retired teachers and students want to give back</p>
+                    <p class="text-sm text-gray-500 mt-2">But no easy way to connect with those in need</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deployment Plan -->
+        <div class="bg-white rounded-2xl p-8 shadow-lg mb-16 fade-in">
+            <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">📍 How We'll Reach Users</h3>
+            
+            <div class="space-y-8">
+                <!-- Phase 1 -->
+                <div class="border-l-4 border-orange-500 pl-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-orange-500 text-white px-4 py-1 rounded-full font-semibold">Phase 1</span>
+                        <span class="text-gray-600">Months 1-3: Pilot Program</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">🎯 Kuala Lumpur School Pilot</h4>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-orange-500 mt-1">✓</span>
+                            <span><strong>Partner with 2-3 secondary schools</strong> in KL (SMK Bandar Utama, SMK Sri Hartamas)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-orange-500 mt-1">✓</span>
+                            <span><strong>Recruit through school counselors</strong> who can identify students needing help</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-orange-500 mt-1">✓</span>
+                            <span><strong>Onboard volunteer tutors</strong> from university societies (UM, UKM volunteer clubs)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-orange-500 mt-1">✓</span>
+                            <span><strong>Run awareness sessions</strong> at schools during assembly time</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 bg-orange-50 rounded-lg p-4">
+                        <p class="font-semibold text-orange-800">Target: 100 students matched with 50 volunteers</p>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="border-l-4 border-green-500 pl-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-green-500 text-white px-4 py-1 rounded-full font-semibold">Phase 2</span>
+                        <span class="text-gray-600">Months 4-6: Community Expansion</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">🤝 NGO & Community Partnerships</h4>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <span><strong>Partner with education NGOs</strong> (Teach For Malaysia, MERCY Malaysia)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <span><strong>Expand to Selangor & Penang</strong> through community centers</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <span><strong>Create WhatsApp community groups</strong> for each region</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <span><strong>Recruit retired teachers</strong> through NUTP (National Union of Teaching Profession)</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 bg-green-50 rounded-lg p-4">
+                        <p class="font-semibold text-green-800">Target: 500 active matches across 3 states</p>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="border-l-4 border-blue-500 pl-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-blue-500 text-white px-4 py-1 rounded-full font-semibold">Phase 3</span>
+                        <span class="text-gray-600">Months 7-12: Digital Scale</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">📱 Nationwide Digital Campaign</h4>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500 mt-1">✓</span>
+                            <span><strong>Social media marketing</strong> on TikTok, Instagram, Facebook targeting parents & students</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500 mt-1">✓</span>
+                            <span><strong>Partner with Malaysian influencers</strong> in education space</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500 mt-1">✓</span>
+                            <span><strong>Mobile app development</strong> for easier access</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500 mt-1">✓</span>
+                            <span><strong>Corporate sponsorship</strong> from banks & telcos for sustainability</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 bg-blue-50 rounded-lg p-4">
+                        <p class="font-semibold text-blue-800">Target: 2,000+ matches covering all 13 states</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Metrics -->
+        <div class="bg-white rounded-2xl p-8 shadow-lg mb-16 fade-in">
+            <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">📈 Measurable Community Benefit</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6">
+                    <h4 class="text-xl font-bold text-orange-800 mb-4">Primary Metrics</h4>
+                    <ul class="space-y-3">
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-700">Students Helped</span>
+                            <span class="font-bold text-orange-600">Tracked daily</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-700">Tutoring Hours Delivered</span>
+                            <span class="font-bold text-orange-600">Logged per session</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-700">Active Volunteer Tutors</span>
+                            <span class="font-bold text-orange-600">Monthly count</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-700">Geographic Coverage</span>
+                            <span class="font-bold text-orange-600">States reached</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6">
+                    <h4 class="text-xl font-bold text-green-800 mb-4">Impact Metrics</h4>
+                    <ul class="space-y-3">
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-700">Money Saved by Families</span>
+                            <span class="font-bold text-green-600">RM300/student/month</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-700">Student Satisfaction Rate</span>
+                            <span class="font-bold text-green-600">Survey after sessions</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-700">Grade Improvement</span>
+                            <span class="font-bold text-green-600">Before/after tracking</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-700">Volunteer Retention Rate</span>
+                            <span class="font-bold text-green-600">3-month active rate</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Projected Impact -->
+            <div class="bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl p-8 text-white text-center">
+                <h4 class="text-2xl font-bold mb-6">💰 Projected 1-Year Community Impact</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <div class="text-4xl font-bold mb-2">2,000+</div>
+                        <div class="text-purple-100">Students receiving free tutoring</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold mb-2">RM 7.2M</div>
+                        <div class="text-purple-100">Total tuition fees saved</div>
+                        <div class="text-sm text-purple-200 mt-1">(2000 students × RM300/month × 12 months)</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold mb-2">20,000+</div>
+                        <div class="text-purple-100">Hours of free education delivered</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Future Vision -->
+        <div class="bg-white rounded-2xl p-8 shadow-lg mb-16 fade-in">
+            <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">🔮 Future Features & Vision</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition">
+                    <div class="text-4xl mb-3">📹</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Video Tutoring Platform</h4>
+                    <p class="text-gray-600">Built-in video call feature for remote tutoring sessions, eliminating need for third-party apps</p>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition">
+                    <div class="text-4xl mb-3">🎓</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Volunteer Certification</h4>
+                    <p class="text-gray-600">Issue certificates for volunteers showing tutoring hours for their resume/portfolio</p>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition">
+                    <div class="text-4xl mb-3">📚</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Resource Library</h4>
+                    <p class="text-gray-600">Free study materials, past year papers, and notes shared by tutors</p>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition">
+                    <div class="text-4xl mb-3">👨‍👩‍👧</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Parent Dashboard</h4>
+                    <p class="text-gray-600">Parents can track their child's tutoring sessions and progress</p>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition">
+                    <div class="text-4xl mb-3">🏆</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Gamification System</h4>
+                    <p class="text-gray-600">Badges and achievements for students and volunteers to increase engagement</p>
+                </div>
+
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition">
+                    <div class="text-4xl mb-3">🌏</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Regional Expansion</h4>
+                    <p class="text-gray-600">Expand to Southeast Asia - starting with Indonesia, Philippines, Thailand</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="bg-gradient-to-r from-orange-500 via-purple-500 to-blue-500 rounded-2xl p-12 text-white text-center fade-in">
+            <h3 class="text-4xl font-bold mb-4">🚀 Join Us in Making This Vision Reality</h3>
+            <p class="text-xl text-orange-100 mb-8 max-w-3xl mx-auto">
+                Education is the most powerful tool to break the cycle of poverty. 
+                With Cikgu Connect, we're ensuring every Malaysian child gets the help they deserve.
+            </p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="student.html" class="bg-white text-orange-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-50 transition">
+                    I'm a Student →
+                </a>
+                <a href="volunteer.html" class="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-50 transition">
+                    I Want to Volunteer →
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="mb-2">🇲🇾 Built for Malaysia, with love</p>
+            <p class="text-gray-400 text-sm">Hackathon 2026 - Making education accessible to all</p>
+        </div>
+    </footer>
+
+</body>
+</html>
