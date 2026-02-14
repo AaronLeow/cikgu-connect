@@ -420,6 +420,46 @@
         function closeAIModal() {
             document.getElementById('aiMatchingModal').classList.add('hidden');
         }
+        
+        // Load student needs from localStorage on page load
+        window.addEventListener('load', function() {
+            const storedNeeds = JSON.parse(localStorage.getItem('studentNeeds') || '[]');
+            
+            if (storedNeeds.length > 0) {
+                const needsList = document.getElementById('studentNeedsList');
+                
+                // Add stored needs to the list
+                storedNeeds.forEach(need => {
+                    const needHtml = `
+                        <div class="border-2 border-gray-200 hover:border-green-400 p-6 mb-4 rounded-lg transition cursor-pointer">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-800">${need.grade} Student - ${need.subject}</h4>
+                                    <p class="text-sm text-gray-500">Just posted</p>
+                                </div>
+                                <button onclick="claimNeed(this, '${need.subject}', '${need.grade}')" 
+                                        class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-semibold transition">
+                                    I Can Help! 🙋
+                                </button>
+                            </div>
+                            <p class="text-gray-700 mb-3">${need.description}</p>
+                            <div class="flex gap-2 text-sm">
+                                <span class="bg-orange-200 text-orange-800 px-3 py-1 rounded-full">${need.subject}</span>
+                                <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">${need.grade}</span>
+                                ${need.time ? `<span class="bg-blue-200 text-blue-800 px-3 py-1 rounded-full">📅 ${need.time}</span>` : ''}
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Insert at the beginning of the list
+                    needsList.insertAdjacentHTML('afterbegin', needHtml);
+                });
+                
+                // Update the count
+                const currentCount = parseInt(document.getElementById('needsCount').textContent);
+                document.getElementById('needsCount').textContent = currentCount + storedNeeds.length;
+            }
+        });
     </script>
 
 </body>
