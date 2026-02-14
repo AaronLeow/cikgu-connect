@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Impact - Cikgu Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-blue-50 min-h-screen">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition cursor-pointer">
+                <span class="text-3xl">👨‍🏫</span>
+                <h1 class="text-2xl font-bold text-purple-600">Cikgu Connect</h1>
+            </a>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-4 py-12">
+        
+        <!-- Page Title -->
+        <div class="text-center mb-12 fade-in">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">📊 Community Impact Dashboard</h2>
+            <p class="text-gray-600">Real-time data showing how Cikgu Connect is transforming education in Malaysia</p>
+        </div>
+
+        <!-- Main Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            <div class="bg-white rounded-xl p-6 shadow-lg text-center fade-in">
+                <div class="text-5xl font-bold text-orange-600 mb-2" id="totalStudents">247</div>
+                <div class="text-gray-600">Students Helped</div>
+                <div class="text-sm text-green-600 mt-2">↑ +12 this week</div>
+            </div>
+            
+            <div class="bg-white rounded-xl p-6 shadow-lg text-center fade-in" style="animation-delay: 0.1s">
+                <div class="text-5xl font-bold text-green-600 mb-2" id="totalVolunteers">156</div>
+                <div class="text-gray-600">Active Volunteers</div>
+                <div class="text-sm text-green-600 mt-2">↑ +8 this week</div>
+            </div>
+            
+            <div class="bg-white rounded-xl p-6 shadow-lg text-center fade-in" style="animation-delay: 0.2s">
+                <div class="text-5xl font-bold text-blue-600 mb-2" id="totalHours">1,892</div>
+                <div class="text-gray-600">Tutoring Hours</div>
+                <div class="text-sm text-green-600 mt-2">↑ +145 hours</div>
+            </div>
+            
+            <div class="bg-white rounded-xl p-6 shadow-lg text-center fade-in" style="animation-delay: 0.3s">
+                <div class="text-5xl font-bold text-purple-600 mb-2">89</div>
+                <div class="text-gray-600">Active Matches</div>
+                <div class="text-sm text-green-600 mt-2">↑ +5 this week</div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <!-- Popular Subjects Chart -->
+            <div class="bg-white rounded-xl p-6 shadow-lg fade-in">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">📚 Most Requested Subjects</h3>
+                <canvas id="subjectsChart"></canvas>
+            </div>
+            
+            <!-- Growth Chart -->
+            <div class="bg-white rounded-xl p-6 shadow-lg fade-in">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">📈 Platform Growth (Last 6 Months)</h3>
+                <canvas id="growthChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Geographic Distribution -->
+        <div class="bg-white rounded-xl p-8 shadow-lg mb-12 fade-in">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">🗺️ Where We're Making Impact</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-orange-50 rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-orange-600">87</div>
+                    <div class="text-gray-600 text-sm">Kuala Lumpur</div>
+                </div>
+                <div class="bg-green-50 rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-green-600">52</div>
+                    <div class="text-gray-600 text-sm">Selangor</div>
+                </div>
+                <div class="bg-blue-50 rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-blue-600">34</div>
+                    <div class="text-gray-600 text-sm">Penang</div>
+                </div>
+                <div class="bg-purple-50 rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-purple-600">28</div>
+                    <div class="text-gray-600 text-sm">Johor</div>
+                </div>
+                <div class="bg-pink-50 rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-pink-600">19</div>
+                    <div class="text-gray-600 text-sm">Perak</div>
+                </div>
+                <div class="bg-yellow-50 rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-yellow-600">15</div>
+                    <div class="text-gray-600 text-sm">Melaka</div>
+                </div>
+                <div class="bg-indigo-50 rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-indigo-600">8</div>
+                    <div class="text-gray-600 text-sm">Sabah</div>
+                </div>
+                <div class="bg-red-50 rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-red-600">4</div>
+                    <div class="text-gray-600 text-sm">Sarawak</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Stories -->
+        <div class="bg-white rounded-xl p-8 shadow-lg fade-in">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">💫 Recent Success Stories</h3>
+            <div class="space-y-4">
+                <div class="border-l-4 border-green-500 bg-green-50 p-4 rounded">
+                    <p class="text-gray-700 mb-2">"Thanks to my volunteer tutor, I improved my Add Math from D to A! Never thought it was possible."</p>
+                    <p class="text-sm text-green-700 font-semibold">- Form 5 student from Petaling Jaya</p>
+                </div>
+                <div class="border-l-4 border-blue-500 bg-blue-50 p-4 rounded">
+                    <p class="text-gray-700 mb-2">"Teaching through Cikgu Connect is the most fulfilling thing I've done since retiring. Seeing students succeed makes my day!"</p>
+                    <p class="text-sm text-blue-700 font-semibold">- Retired teacher, 35 years experience</p>
+                </div>
+                <div class="border-l-4 border-purple-500 bg-purple-50 p-4 rounded">
+                    <p class="text-gray-700 mb-2">"My family couldn't afford tuition. This platform gave me access to quality help for free. Game changer!"</p>
+                    <p class="text-sm text-purple-700 font-semibold">- Form 4 student from rural Pahang</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Impact Projection -->
+        <div class="mt-12 bg-gradient-to-r from-orange-500 to-purple-600 rounded-xl p-8 text-white text-center fade-in">
+            <h3 class="text-3xl font-bold mb-4">🚀 Our Vision for 2027</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                <div>
+                    <div class="text-5xl font-bold mb-2">10,000+</div>
+                    <div class="text-orange-100">Students Helped</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold mb-2">5,000+</div>
+                    <div class="text-orange-100">Volunteer Tutors</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold mb-2">All 13</div>
+                    <div class="text-orange-100">States Covered</div>
+                </div>
+            </div>
+            <p class="mt-8 text-lg text-orange-100">Making quality education accessible to every Malaysian student, regardless of their financial background</p>
+        </div>
+    </div>
+
+    <script>
+        // Load stats from localStorage if available
+        try {
+            const stats = JSON.parse(localStorage.getItem('stats') || '{"students": 247, "volunteers": 156, "hours": 1892}');
+            document.getElementById('totalStudents').textContent = stats.students;
+            document.getElementById('totalVolunteers').textContent = stats.volunteers;
+            document.getElementById('totalHours').textContent = stats.hours.toLocaleString();
+        } catch(e) {
+            console.log('Using default stats');
+        }
+
+        // Popular Subjects Chart
+        const subjectsCtx = document.getElementById('subjectsChart').getContext('2d');
+        new Chart(subjectsCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Add Math', 'Mathematics', 'Science', 'English', 'Physics', 'Chemistry'],
+                datasets: [{
+                    data: [35, 25, 18, 12, 6, 4],
+                    backgroundColor: [
+                        '#f97316',
+                        '#22c55e',
+                        '#3b82f6',
+                        '#a855f7',
+                        '#ec4899',
+                        '#eab308'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Growth Chart
+        const growthCtx = document.getElementById('growthChart').getContext('2d');
+        new Chart(growthCtx, {
+            type: 'line',
+            data: {
+                labels: ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan'],
+                datasets: [
+                    {
+                        label: 'Students',
+                        data: [45, 78, 112, 156, 203, 247],
+                        borderColor: '#f97316',
+                        backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Volunteers',
+                        data: [28, 52, 73, 98, 127, 156],
+                        borderColor: '#22c55e',
+                        backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

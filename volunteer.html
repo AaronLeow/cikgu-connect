@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer - Cikgu Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-blue-50 min-h-screen">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition cursor-pointer">
+                <span class="text-3xl">👨‍🏫</span>
+                <h1 class="text-2xl font-bold text-orange-600">Cikgu Connect</h1>
+            </a>
+        </div>
+    </header>
+
+    <div class="max-w-4xl mx-auto px-4 py-12">
+        
+        <!-- Page Title -->
+        <div class="text-center mb-12 slide-in">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">🙋 Become a Volunteer Tutor</h2>
+            <p class="text-gray-600">Share your knowledge and make a difference in a student's life!</p>
+        </div>
+
+        <!-- Volunteer Registration Form -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-8 slide-in">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">📝 Register as Volunteer</h3>
+            <form id="volunteerForm">
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-2">Your Name</label>
+                    <input type="text" id="volunteerName" required
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500">
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-2">Your Background</label>
+                    <select id="background" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500">
+                        <option value="">Select your background</option>
+                        <option value="Retired Teacher">Retired Teacher</option>
+                        <option value="Current Teacher">Current Teacher</option>
+                        <option value="University Student">University Student</option>
+                        <option value="Working Professional">Working Professional</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-2">Subjects You Can Teach</label>
+                    <input type="text" id="subjects" required
+                           placeholder="E.g., Mathematics, Physics, English..."
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500">
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-2">Available Time</label>
+                    <input type="text" id="availability" required
+                           placeholder="E.g., Weekday evenings, Saturday mornings..."
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500">
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-2">Why do you want to volunteer?</label>
+                    <textarea id="motivation" rows="3"
+                              placeholder="Share your motivation..."
+                              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"></textarea>
+                </div>
+
+                <button type="submit" 
+                        class="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-lg text-lg font-semibold shadow-lg transform hover:scale-105 transition">
+                    ✅ Register as Volunteer
+                </button>
+            </form>
+        </div>
+
+        <!-- Success Message (hidden by default) -->
+        <div id="registrationSuccess" class="hidden bg-green-100 border border-green-400 text-green-700 px-6 py-4 rounded-lg mb-8">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🎉</span>
+                <div>
+                    <p class="font-semibold">Registration successful!</p>
+                    <p class="text-sm">Thank you for volunteering! Now you can browse student needs below and claim one to help.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Matching Feature -->
+            <div class="bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl p-6 mb-8 text-white">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">🤖 AI-Powered Smart Matching</h3>
+                        <p class="text-purple-100">Let our AI find the best student match based on your expertise and availability</p>
+                    </div>
+                    <button onclick="startAIMatching()" 
+                            class="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-purple-50 transition">
+                        Find My Match 🎯
+                    </button>
+                </div>
+            </div>
+
+            <!-- AI Matching Modal -->
+            <div id="aiMatchingModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div class="bg-white rounded-xl p-8 max-w-md mx-4">
+                    <div class="text-center">
+                        <div id="aiLoadingContent">
+                            <div class="text-6xl mb-4">🤖</div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">AI is analyzing...</h3>
+                            <div class="bg-gray-200 rounded-full h-4 mb-4 overflow-hidden">
+                                <div id="aiProgressBar" class="bg-gradient-to-r from-purple-500 to-blue-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                            <p id="aiStatusText" class="text-gray-600 text-sm">Scanning your expertise...</p>
+                        </div>
+                        
+                        <div id="aiResultContent" class="hidden">
+                            <div class="text-6xl mb-4">✨</div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Perfect Match Found!</h3>
+                            <div class="bg-purple-50 rounded-lg p-4 mb-4 text-left">
+                                <p class="font-semibold text-purple-800 mb-2" id="aiMatchTitle"></p>
+                                <p class="text-gray-700 text-sm" id="aiMatchDescription"></p>
+                                <div class="mt-3">
+                                    <span class="text-xs text-purple-600">🎯 Match Score: </span>
+                                    <span class="font-bold text-purple-800" id="aiMatchScore">95%</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <button onclick="acceptAIMatch()" 
+                                        class="flex-1 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold">
+                                    Accept Match ✅
+                                </button>
+                                <button onclick="closeAIModal()" 
+                                        class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-3 rounded-lg font-semibold">
+                                    Find Another
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Student Needs Available -->
+        <div class="bg-white rounded-xl shadow-lg p-8">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">📚 Students Who Need Help</h3>
+                <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full font-semibold pulse">
+                    <span id="needsCount">3</span> needs available
+                </span>
+            </div>
+            
+            <div id="studentNeedsList">
+                <!-- Hardcoded example needs -->
+                <div class="border-2 border-gray-200 hover:border-green-400 p-6 mb-4 rounded-lg transition cursor-pointer">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800">Form 4 Student - Additional Mathematics</h4>
+                            <p class="text-sm text-gray-500">Posted 2 days ago</p>
+                        </div>
+                        <button onclick="claimNeed(this, 'Add Math', 'Form 4')" 
+                                class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-semibold transition">
+                            I Can Help! 🙋
+                        </button>
+                    </div>
+                    <p class="text-gray-700 mb-3">Need help with differentiation and integration. Preparing for SPM trial exam next month.</p>
+                    <div class="flex gap-2 text-sm">
+                        <span class="bg-orange-200 text-orange-800 px-3 py-1 rounded-full">Add Math</span>
+                        <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Form 4</span>
+                        <span class="bg-blue-200 text-blue-800 px-3 py-1 rounded-full">📅 Weekday evenings preferred</span>
+                    </div>
+                </div>
+
+                <div class="border-2 border-gray-200 hover:border-green-400 p-6 mb-4 rounded-lg transition cursor-pointer">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800">Form 2 Student - Science</h4>
+                            <p class="text-sm text-gray-500">Posted 5 days ago</p>
+                        </div>
+                        <button onclick="claimNeed(this, 'Science', 'Form 2')" 
+                                class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-semibold transition">
+                            I Can Help! 🙋
+                        </button>
+                    </div>
+                    <p class="text-gray-700 mb-3">Struggling with Physics topics, especially force and motion. Need someone to explain in simple terms.</p>
+                    <div class="flex gap-2 text-sm">
+                        <span class="bg-green-200 text-green-800 px-3 py-1 rounded-full">Science</span>
+                        <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Form 2</span>
+                        <span class="bg-blue-200 text-blue-800 px-3 py-1 rounded-full">📅 Flexible timing</span>
+                    </div>
+                </div>
+
+                <div class="border-2 border-gray-200 hover:border-green-400 p-6 mb-4 rounded-lg transition cursor-pointer">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800">Form 5 Student - English</h4>
+                            <p class="text-sm text-gray-500">Posted 1 week ago</p>
+                        </div>
+                        <button onclick="claimNeed(this, 'English', 'Form 5')" 
+                                class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-semibold transition">
+                            I Can Help! 🙋
+                        </button>
+                    </div>
+                    <p class="text-gray-700 mb-3">Need help with essay writing and grammar for SPM English paper. Want to improve my writing skills.</p>
+                    <div class="flex gap-2 text-sm">
+                        <span class="bg-blue-200 text-blue-800 px-3 py-1 rounded-full">English</span>
+                        <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full">Form 5</span>
+                        <span class="bg-blue-200 text-blue-800 px-3 py-1 rounded-full">📅 Weekend mornings</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Claimed Success Modal -->
+        <div id="claimModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white rounded-xl p-8 max-w-md mx-4 slide-in">
+                <div class="text-center">
+                    <div class="text-6xl mb-4">🎉</div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Match Successful!</h3>
+                    <p class="text-gray-600 mb-4">You've been connected with the student. They will contact you soon!</p>
+                    <p class="text-sm text-gray-500 mb-6" id="matchDetails"></p>
+                    <button onclick="closeModal()" 
+                            class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold">
+                        Great! 👍
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle volunteer registration
+        document.getElementById('volunteerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('volunteerName').value;
+            const background = document.getElementById('background').value;
+            const subjects = document.getElementById('subjects').value;
+            const availability = document.getElementById('availability').value;
+            const motivation = document.getElementById('motivation').value;
+            
+            // Show success message
+            document.getElementById('registrationSuccess').classList.remove('hidden');
+            
+            // Reset form
+            this.reset();
+            
+            // Scroll to success message
+            document.getElementById('registrationSuccess').scrollIntoView({ behavior: 'smooth' });
+            
+            // Update volunteer count
+            try {
+                let stats = JSON.parse(localStorage.getItem('stats') || '{"students": 247, "volunteers": 156, "hours": 1892}');
+                stats.volunteers += 1;
+                localStorage.setItem('stats', JSON.stringify(stats));
+            } catch(e) {
+                console.log('localStorage not available');
+            }
+        });
+        
+        // Handle claiming a need
+        function claimNeed(button, subject, grade) {
+            // Disable the button
+            button.disabled = true;
+            button.textContent = '✅ Claimed!';
+            button.classList.remove('bg-green-600', 'hover:bg-green-700');
+            button.classList.add('bg-gray-400', 'cursor-not-allowed');
+            
+            // Show modal
+            document.getElementById('matchDetails').textContent = `You'll be tutoring ${grade} - ${subject}`;
+            document.getElementById('claimModal').classList.remove('hidden');
+            
+            // Update impact hours
+            try {
+                let stats = JSON.parse(localStorage.getItem('stats') || '{"students": 247, "volunteers": 156, "hours": 1892}');
+                stats.hours += 10; // Assume 10 hours per match
+                localStorage.setItem('stats', JSON.stringify(stats));
+            } catch(e) {
+                console.log('localStorage not available');
+            }
+            
+            // Update needs count
+            const currentCount = parseInt(document.getElementById('needsCount').textContent);
+            document.getElementById('needsCount').textContent = currentCount - 1;
+        }
+        
+        // Close modal
+        function closeModal() {
+            document.getElementById('claimModal').classList.add('hidden');
+        }
+
+        // AI Matching Functions
+        const aiStatuses = [
+            "Scanning your expertise...",
+            "Analyzing student needs...",
+            "Matching teaching styles...",
+            "Checking availability compatibility...",
+            "Calculating optimal match..."
+        ];
+
+        const sampleMatches = [
+            {
+                title: "Form 4 Student - Additional Mathematics",
+                description: "Struggling with calculus and needs help preparing for SPM. Your expertise in advanced math makes you perfect!",
+                score: "95%"
+            },
+            {
+                title: "Form 2 Student - Science",
+                description: "Needs help with Physics fundamentals. Your patient teaching style is ideal for younger students.",
+                score: "88%"
+            },
+            {
+                title: "Form 5 Student - English",
+                description: "Wants to improve essay writing. Your background aligns perfectly with their learning goals.",
+                score: "92%"
+            }
+        ];
+
+        let aiProgress = 0;
+        let aiStatusIndex = 0;
+
+        function startAIMatching() {
+            // Show modal
+            document.getElementById('aiMatchingModal').classList.remove('hidden');
+            document.getElementById('aiLoadingContent').classList.remove('hidden');
+            document.getElementById('aiResultContent').classList.add('hidden');
+            
+            // Reset progress
+            aiProgress = 0;
+            aiStatusIndex = 0;
+            document.getElementById('aiProgressBar').style.width = '0%';
+            
+            // Simulate AI processing
+            const progressInterval = setInterval(() => {
+                aiProgress += 20;
+                document.getElementById('aiProgressBar').style.width = aiProgress + '%';
+                
+                if (aiStatusIndex < aiStatuses.length) {
+                    document.getElementById('aiStatusText').textContent = aiStatuses[aiStatusIndex];
+                    aiStatusIndex++;
+                }
+                
+                if (aiProgress >= 100) {
+                    clearInterval(progressInterval);
+                    setTimeout(showAIResult, 500);
+                }
+            }, 600);
+        }
+
+        function showAIResult() {
+            // Pick a random match
+            const match = sampleMatches[Math.floor(Math.random() * sampleMatches.length)];
+            
+            // Update result content
+            document.getElementById('aiMatchTitle').textContent = match.title;
+            document.getElementById('aiMatchDescription').textContent = match.description;
+            document.getElementById('aiMatchScore').textContent = match.score;
+            
+            // Show result
+            document.getElementById('aiLoadingContent').classList.add('hidden');
+            document.getElementById('aiResultContent').classList.remove('hidden');
+        }
+
+        function acceptAIMatch() {
+            // Get the match title
+            const matchTitle = document.getElementById('aiMatchTitle').textContent;
+            
+            // Close AI modal
+            closeAIModal();
+            
+            // Find and disable the corresponding button
+            const buttons = document.querySelectorAll('#studentNeedsList button');
+            buttons.forEach(button => {
+                const card = button.closest('.border-2');
+                const cardTitle = card.querySelector('h4').textContent;
+                
+                // If this card matches the AI result, disable it
+                if (cardTitle.includes(matchTitle.split(' - ')[1])) { // Match by subject
+                    button.disabled = true;
+                    button.textContent = '✅ Claimed!';
+                    button.classList.remove('bg-green-600', 'hover:bg-green-700');
+                    button.classList.add('bg-gray-400', 'cursor-not-allowed');
+                }
+            });
+            
+            // Update counts
+            const currentCount = parseInt(document.getElementById('needsCount').textContent);
+            document.getElementById('needsCount').textContent = currentCount - 1;
+            
+            // Show success modal
+            document.getElementById('matchDetails').textContent = `AI matched you with: ${matchTitle}`;
+            document.getElementById('claimModal').classList.remove('hidden');
+            
+            // Update stats
+            try {
+                let stats = JSON.parse(localStorage.getItem('stats') || '{"students": 247, "volunteers": 156, "hours": 1892}');
+                stats.hours += 10;
+                localStorage.setItem('stats', JSON.stringify(stats));
+            } catch(e) {
+                console.log('localStorage not available');
+            }
+        }
+
+        function closeAIModal() {
+            document.getElementById('aiMatchingModal').classList.add('hidden');
+        }
+    </script>
+
+</body>
+</html>
