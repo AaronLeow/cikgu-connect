@@ -86,6 +86,30 @@ The platform tracks:
 
 ---
 
+## 🖥️ Screenshots
+
+### Homepage
+![Homepage](screenshots/homepage.png)
+*Clean, welcoming interface explaining the platform's mission*
+
+### Student Request Page
+![Student Page](screenshots/student.png)
+*Simple form for students to post their learning needs*
+
+### Volunteer Dashboard with AI Matching
+![Volunteer Page](screenshots/volunteer.png)
+*Tutors can browse requests, claim matches, and use AI-powered matching*
+
+### Community Impact Dashboard
+![Impact Dashboard](screenshots/impact.png)
+*Data visualization showing platform's measurable community benefit*
+
+### Vision & Roadmap
+![Roadmap](screenshots/roadmap.png)
+*Clear deployment plan and future vision*
+
+---
+
 ## 🌐 Live Demo
 
 **Visit the live platform:** [https://cikgu-connect.vercel.app](https://cikgu-connect.vercel.app)
